@@ -24,7 +24,11 @@
 
 | Path                                       |  Responsibility                                                                               |
 |--------------------------------------------|-----------------------------------------------------------------------------------------------|
+<<<<<<< HEAD
 | `app/(main)/pricing/page.jsx`              | Main pricing page: includes pricing table, FAQ, and navigation.                               |
+=======
+| `app/(main)/pricing/page.jsx`              | Main pricing page: includes pricing table, FAQ, contact form, and navigation.                 |
+>>>>>>> f5376832308699d65d126d3f2656307267d8cdbf
 | `components/pricing/`                      | Modular components for pricing table UI and logic.                                            |
 | `components/ui/badge.jsx`                  | Badge component for visual highlights (e.g., "Affordable Healthcare").                        |
 | `components/ui/ContactForm.jsx`             | Handles user input and form submission for contacting support.                                |
@@ -76,7 +80,7 @@
 
 ### 1. Clone the Repository
 
-git clone https://github.com/yourusername/healthmate.git
+git clone https://github.com/swarnabha-dutta/healthmate
 cd healthmate 
 
 ```bash
@@ -101,14 +105,16 @@ NEXT_PUBLIC_API_KEY=your_api_key_if_any
 npm run dev
 # or
 yarn dev
-      
 
 
+<<<<<<< HEAD
  
 
  ## 📦 Deployment
+=======
+## 📦 Deployment
+>>>>>>> f5376832308699d65d126d3f2656307267d8cdbf
 This project is ready to be deployed to platforms like Vercel, Render, or Netlify.
-
 Make sure to add your environment variables to the deployment platform as well.   
  
  ---
