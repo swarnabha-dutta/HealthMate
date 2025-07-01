@@ -26,7 +26,6 @@
 | Path                                       |  Responsibility                                                                               |
 |--------------------------------------------|-----------------------------------------------------------------------------------------------|
 | `app/(main)/pricing/page.jsx`              | Main pricing page: includes pricing table, FAQ, contact form, and navigation.                 |
-| `app/(main)/contact/Contact.jsx`           | Dedicated contact page with a user-friendly support form.                                     |
 | `components/pricing/`                      | Modular components for pricing table UI and logic.                                            |
 | `components/ui/badge.jsx`                  | Badge component for visual highlights (e.g., "Affordable Healthcare").                        |
 | `components/ui/ContactForm.jsx`            | Handles user input and form submission for contacting support.                                |
