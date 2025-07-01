@@ -108,15 +108,10 @@ NEXT_PUBLIC_API_KEY=your_api_key_if_any
 npm run dev
 # or
 yarn dev
-      
 
 
- 
-
-
- ## 📦 Deployment
+## 📦 Deployment
 This project is ready to be deployed to platforms like Vercel, Render, or Netlify.
-
 Make sure to add your environment variables to the deployment platform as well.   
  
  ---
