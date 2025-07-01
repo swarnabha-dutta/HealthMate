@@ -1,6 +1,6 @@
 import { getDoctorBySpeciality } from '@/actions/doctors-listing';
 import DoctorCard from '@/components/doctor-card';
-import { PageHeader } from '@/components/page-header';
+import {PageHeader} from '@/components/page-header';
 import { redirect } from 'next/navigation';
 import React from 'react'
 
