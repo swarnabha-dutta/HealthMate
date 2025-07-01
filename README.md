@@ -83,7 +83,7 @@
 
 ### 1. Clone the Repository
 
-git clone https://github.com/yourusername/healthmate.git
+git clone https://github.com/swarnabha-dutta/healthmate
 cd healthmate 
 
 ```bash
