@@ -1,0 +1,43 @@
+import { verifyAdmin } from '@/actions/admin';
+import PageHeader from '@/components/page-header';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { AlertCircle, ShieldCheck, Users } from 'lucide-react';
+import { redirect } from 'next/navigation';
+import React from 'react'
+
+export const metadata = {
+    title: "Admin Settings- HealthMate",
+    description: "Manage Doctors,patients , and platform settings",
+};
+
+
+const AdminLayout =async ({children}) => {
+  
+    const isAdmin = await verifyAdmin();
+    if (!isAdmin) {
+        redirect("/onboarding");
+    }
+    return (
+    
+        <div className='container mx-auto px-4 py-8'>
+            <PageHeader icon={<ShieldCheck />} title="Admin Settings" />
+            <Tabs
+                defaultValue="account"
+                className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <TabsList>
+                    <TabsTrigger value="pending">
+                        <AlertCircle className='h-4 w-4 mr-2 hidden md:inline'/>
+                        <span>Pending Verification</span>
+                    </TabsTrigger>
+                    <TabsTrigger value="doctors">
+                        <Users className="h-4 w-4 mr-2 hidden md:inline"/>
+                        <span>Doctors</span>
+                    </TabsTrigger>
+                </TabsList>
+                {children}
+            </Tabs>
+        </div>
+    )
+}
+
+export default AdminLayout

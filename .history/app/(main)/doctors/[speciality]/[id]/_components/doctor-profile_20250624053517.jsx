@@ -1,0 +1,72 @@
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Medal } from 'lucide-react'
+import Image from 'next/image'
+import React from 'react'
+
+const DoctorProfile = ({doctor,availableDays}) => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="md:col-span-1">
+        <div className='md:sticky md:top-24'>
+            <Card className="border-emerald-900/20">
+              <CardContent className="pt-6">
+                  <div className='flex flex-col items-center text-center'>
+                    <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4 bg-emerald-900/20">
+                    {doctor.imageUrl ? (
+                    <Image
+                      src={doctor.imageUrl}
+                      alt={doctor.name}
+                      fill
+                      className='object-cover'
+                    /> 
+                      ): (
+                      <div className='w-full h-full flex items-center justify-center'>
+                          <User className="w-16 h-16 text-emerald-500"/>
+                      </div>
+                    )}
+                    </div>
+                    <h2 className="text-xl font-bold text-white mb-1">
+                      Dr.{doctor.name}
+                    </h2>
+                    <Badge
+                    className={"bg-emerald-900/20 border-emerald-900/30 text-emerald-400 mb-4"}
+                    >
+                  {doctor.speciality}
+                </Badge>
+                <div className="flex items-center justify-center text-emerald-400 mb-4">
+                    <Medal className="text-emerald-400 h-4 w-4 mr-2"/>
+                  <span className='text-muted-foreground'>
+                    {doctor.experience} years of experience
+                    </span>
+                </div>
+                  </div> 
+              </CardContent>
+            </Card>
+        </div>
+      </div>
+      <div className="md:col-span-2 space-y-6"></div>
+          <Card>
+        <CardHeader>
+          <CardTitle
+          className="text-xl font-bold text-white"
+          >
+            About Dr. {doctor.name}
+          </CardTitle>
+          <CardDescription>
+            {doctor.speciality}
+          </CardDescription>
+          <CardAction>Card Action</CardAction>
+        </CardHeader>
+        <CardContent>
+          <p>Card Content</p>
+        </CardContent>
+        <CardFooter>
+          <p>Card Footer</p>
+        </CardFooter>
+      </Card>
+    </div>
+  )
+}
+
+export default DoctorProfile

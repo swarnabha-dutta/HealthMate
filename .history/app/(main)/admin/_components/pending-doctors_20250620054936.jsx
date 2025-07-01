@@ -1,0 +1,37 @@
+"use client"
+
+import { updateDoctorStatus } from '@/actions/admin';
+import { Card } from '@/components/ui/card';
+import useFetch from '@/hooks/use-fetch';
+import React, { useState } from 'react'
+
+const PendingDoctors = ({doctors}) => {
+
+  const {
+    loading,
+    data,
+    fn: submitStatusUpdate
+  } = useFetch(updateDoctorStatus);
+
+
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  return (
+    <div>
+      <Card className="bg-muted/20 border-emerald-900/20">
+          <CardHeade className="text-white text-xl font-bold" >
+            <CardTitle>Pending Doctor Verification</CardTitle>
+            <CardDescription>Review and Approve doctor applications</CardDescription>
+            <CardAction>Card Action</CardAction>
+          </CardHeade>
+          <CardContent>
+            <p>Card Content</p>
+          </CardContent>
+          <CardFooter>
+            <p>Card Footer</p>
+          </CardFooter>
+      </Card>
+    </div>
+  )
+}
+
+export default PendingDoctors
