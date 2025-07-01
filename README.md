@@ -22,20 +22,16 @@
 
 ## 🗂️ **Project Structure**
 
-| Path                                       |  Responsibility                                                                               |
-|--------------------------------------------|-----------------------------------------------------------------------------------------------|
-<<<<<<< HEAD
-| `app/(main)/pricing/page.jsx`              | Main pricing page: includes pricing table, FAQ, and navigation.                               |
-=======
-| `app/(main)/pricing/page.jsx`              | Main pricing page: includes pricing table, FAQ, contact form, and navigation.                 |
->>>>>>> f5376832308699d65d126d3f2656307267d8cdbf
-| `components/pricing/`                      | Modular components for pricing table UI and logic.                                            |
-| `components/ui/badge.jsx`                  | Badge component for visual highlights (e.g., "Affordable Healthcare").                        |
-| `components/ui/ContactForm.jsx`             | Handles user input and form submission for contacting support.                                |
-| `prisma/schema.prisma`                     | Database schema for users, consultations, and related entities.                               |
-| `lib/db.js`                                | Prisma client setup and Neon Postgres database connection.                                    |
-| `public/`                                  | Static assets: images, icons, and more.                                                       |
-| `README.md`                                | Comprehensive documentation, setup, and contribution guidelines.                              |
+| Path                                   | Responsibility                                                                                 |
+|-----------------------------------------|-----------------------------------------------------------------------------------------------|
+| `app/(main)/pricing/page.jsx`           | Main pricing page: includes pricing table, FAQ, and navigation.                               |
+| `components/pricing/`                   | Modular components for pricing table UI and logic.                                            |
+| `components/ui/badge.jsx`               | Badge component for visual highlights (e.g., "Affordable Healthcare").                        |
+| `components/ui/ContactForm.jsx`         | Handles user input and form submission for contacting support.                                |
+| `prisma/schema.prisma`                  | Database schema for users, consultations, and related entities.                               |
+| `lib/db.js`                             | Prisma client setup and Neon Postgres database connection.                                    |
+| `public/`                               | Static assets: images, icons, and more.                                                       |
+| `README.md`                             | Comprehensive documentation, setup, and contribution guidelines.                              |
 
 ---
 
@@ -83,7 +79,6 @@
 git clone https://github.com/swarnabha-dutta/healthmate
 cd healthmate 
 
-```bash
 ### 2. Install Dependencies  
  npm install
 # or
@@ -96,28 +91,25 @@ NEXT_PUBLIC_API_KEY=your_api_key_if_any
 
 
 ### 4. Push Prisma Schema  
- 
- npx prisma db push
-     
+```bash
+npx prisma db push
+```
 
 ### 5. Run the Dev Server         
-
+```bash
 npm run dev
 # or
 yarn dev
+```
 
+---
 
-<<<<<<< HEAD
- 
-
- ## 📦 Deployment
-=======
 ## 📦 Deployment
->>>>>>> f5376832308699d65d126d3f2656307267d8cdbf
 This project is ready to be deployed to platforms like Vercel, Render, or Netlify.
+
 Make sure to add your environment variables to the deployment platform as well.   
  
- ---
+---
 
 ## 📬 Contact
 Have questions or feedback?
