@@ -1,0 +1,7 @@
+
+
+export const GET = async (req) => {
+    const url = new URL(req.url);
+    const code = url.searchParams.get('code');
+    
+}
