@@ -51,7 +51,8 @@ import useFetch from "@/hooks/use-fetch";
                 No upcoming appointments
                 </h3>
                 <p className="text-muted-foreground">
-                You don&apos;t have any scheduled appointments yet.
+                You don&apos;t have any scheduled appointments yet. Make sure
+                you&apos;ve set your availability to allow patients to book.
                 </p>
             </div>
             )}

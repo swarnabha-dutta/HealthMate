@@ -33,6 +33,7 @@ model User {
   // Relations
   patientAppointments Appointment[]       @relation("PatientAppointments")
   doctorAppointments  Appointment[]       @relation("DoctorAppointments")
+  availabilities      Availability[]
   transactions        CreditTransaction[]
   payouts             Payout[]
 }
@@ -48,6 +49,23 @@ enum VerificationStatus {
   PENDING
   VERIFIED
   REJECTED
+}
+
+model Availability {
+  id        String     @id @default(uuid())
+  doctorId  String
+  doctor    User       @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  startTime DateTime
+  endTime   DateTime
+  status    SlotStatus @default(AVAILABLE)
+
+  @@index([doctorId, startTime])
+}
+
+enum SlotStatus {
+  AVAILABLE
+  BOOKED
+  BLOCKED
 }
 
 model Appointment {

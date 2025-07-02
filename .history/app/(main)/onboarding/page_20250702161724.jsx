@@ -129,7 +129,8 @@ const OnboardingPage = () => {
                         className="text-xl font-semibold text-white mb-2"
                         >Join as a Doctor</CardTitle>
                         <CardDescription className="mb-4">
-                        Create your professional profile and provide consultations
+                        Create your professional profile, set your availability, and
+                        provide consultations
                         </CardDescription>
                         <Button
                         disabled={loading}    

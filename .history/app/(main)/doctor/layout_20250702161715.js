@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/page-header";
 
 export const metadata = {
   title: "Doctor Dashboard - HealthMate",
-  description: "Manage your appointments",
+  description: "Manage your appointments and availability",
 };
 
 export default async function DoctorDashboardLayout({ children }) {

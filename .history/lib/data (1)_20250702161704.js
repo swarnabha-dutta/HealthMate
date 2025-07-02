@@ -19,7 +19,7 @@ export const features = [
     icon: <Calendar className="h-6 w-6 text-emerald-400" />,
     title: "Book Appointments",
     description:
-      "Browse doctor profiles and book appointments that fit your schedule.",
+      "Browse doctor profiles, check availability, and book appointments that fit your schedule.",
   },
   {
     icon: <Video className="h-6 w-6 text-emerald-400" />,

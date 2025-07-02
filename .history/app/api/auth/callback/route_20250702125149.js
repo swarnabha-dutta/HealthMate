@@ -1,0 +1,41 @@
+import { google } from 'googleapis';
+
+export const GET = async (req) => {
+    const url = new URL(req.url);
+    const code = url.searchParams.get('code');
+
+    const oauth2Client = new google.auth.OAuth2(
+        process.env.GOOGLE_CLIENT_ID,
+        process.env.GOOGLE_CLIENT_SECRET,
+        process.env.GOOGLE_REDIRECT_URI
+    );
+
+    if (!code) {
+        // Step 1: Redirect user to Google OAuth consent screen
+        const authUrl = oauth2Client.generateAuthUrl({
+            access_type: 'offline',
+            scope: ['https://www.googleapis.com/auth/calendar.readonly'],
+            prompt: 'consent'
+        });
+        return Response.redirect(authUrl);
+    }
+
+    // Step 2: Handle callback, exchange code for tokens
+    const { tokens } = await oauth2Client.getToken(code);
+    console.log(tokens);
+    oauth2Client.setCredentials(tokens);
+
+    // Step 3: Fetch upcoming events from Google Calendar
+    const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
+    const events = await calendar.events.list({
+        calendarId: 'primary',
+        timeMin: new Date().toISOString(),
+        maxResults: 10,
+        singleEvents: true,
+        orderBy: 'startTime',
+    });
+
+    return new Response(JSON.stringify(events.data.items, null, 2), {
+        headers: { 'Content-Type': 'application/json' },
+    });
+};

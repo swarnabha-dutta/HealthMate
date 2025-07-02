@@ -2,7 +2,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { getDoctorAppointments } from "@/actions/doctor";
 import { getCurrentUser } from "@/actions/onboarding";
 import { redirect } from "next/navigation";
-import { Calendar, DollarSign } from "lucide-react";
+import { Calendar, Clock, DollarSign } from "lucide-react";
 import DoctorAppointmentsList from "./_components/appointment-list";
 import { getDoctorEarnings, getDoctorPayouts } from "@/actions/payout";
 import { DoctorEarnings } from "./_components/doctor-earnings";
@@ -10,14 +10,15 @@ import { DoctorEarnings } from "./_components/doctor-earnings";
 export default async function DoctorDashboardPage() {
   const user = await getCurrentUser();
 
-  const [appointmentsData, earningsData, payoutsData] =
+  const [appointmentsData, availabilityData, earningsData, payoutsData] =
     await Promise.all([
       getDoctorAppointments(),
+      // getDoctorAvailability(),
       getDoctorEarnings(),
       getDoctorPayouts(),
     ]);
 
-  // Redirect if not a doctor
+  //   // Redirect if not a doctor
   if (user?.role !== "DOCTOR") {
     redirect("/onboarding");
   }
@@ -47,12 +48,22 @@ export default async function DoctorDashboardPage() {
           <Calendar className="h-4 w-4 mr-2 hidden md:inline" />
           <span>Appointments</span>
         </TabsTrigger>
+        <TabsTrigger
+          value="availability"
+          className="flex-1 md:flex md:items-center md:justify-start md:px-4 md:py-3 w-full"
+        >
+          <Clock className="h-4 w-4 mr-2 hidden md:inline" />
+          <span>Availability</span>
+        </TabsTrigger>
       </TabsList>
       <div className="md:col-span-3">
         <TabsContent value="appointments" className="border-none p-0">
           <DoctorAppointmentsList
             appointments={appointmentsData.appointments || []}
           />
+        </TabsContent>
+        <TabsContent value="availability" className="border-none p-0">
+          
         </TabsContent>
         <TabsContent value="earnings" className="border-none p-0">
           <DoctorEarnings
