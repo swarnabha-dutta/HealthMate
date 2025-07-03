@@ -1,5 +1,5 @@
 import { getDoctorById } from '@/actions/appointments';
-import PageHeader from '@/components/page-header';
+import { PageHeader } from '@/components/page-header';
 import { redirect } from 'next/navigation';
 
 

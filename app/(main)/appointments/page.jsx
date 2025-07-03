@@ -1,6 +1,6 @@
 import { getPatientAppointments } from "@/actions/patient";
 import { AppointmentCard } from "@/components/appointment-card";
-import  PageHeader  from "@/components/page-header";
+import { PageHeader }  from "@/components/page-header";
 import { Calendar } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { redirect } from "next/navigation";
