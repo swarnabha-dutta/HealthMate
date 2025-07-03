@@ -44,3 +44,11 @@ next-env.d.ts
 /lib/generated/prisma
 /lib/private.key 
 /lib/generated/prisma
+.history/
+
+
+# Custom ignores
+app/(main)/availability/
+app/api/
+prisma/migrations/20250703070405_add_waitlist/
+prisma/migrations/20250703071114_add_waitlist/
