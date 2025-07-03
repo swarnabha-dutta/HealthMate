@@ -6,7 +6,8 @@
         "Healthmate",
         "sonner",
         "Speciality",
-        "Vonage"
+        "Vonage",
+        "waitlist"
     ],
     "git.ignoreLimitWarning": true
 }
