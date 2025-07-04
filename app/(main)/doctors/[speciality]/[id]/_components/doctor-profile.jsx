@@ -7,14 +7,14 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator';
 
-import { Calendar, ChevronDown, ChevronUp, Clock, FileText, Medal } from 'lucide-react'
+import { AlertCircle,Calendar, ChevronDown, ChevronUp, Clock, FileText, Medal } from 'lucide-react'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import SlotPicker from './slot-picker';
 import { useRouter } from 'next/navigation';
 import AppointmentForm from './appointment-form';
 
-const DoctorProfile = ({doctor,availableDays}) => {
+export const DoctorProfile = ({doctor,availableDays}) => {
 
   const [showBooking, setShowBooking] = useState(false);
   const [selectedSlot,setSelectedSlot] = useState(null);

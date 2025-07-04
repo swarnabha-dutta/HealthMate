@@ -65,7 +65,18 @@ export function AvailabilitySettings({ slots }) {
       toast.error("End time must be after start time");
       return;
     }
-
+    // Check for duplicate slot in Frontend 
+    const duplicate = slots.some(
+      (slot) =>
+        new Date(slot.startTime).getHours() === startDate.getHours() &&
+        new Date(slot.startTime).getMinutes() === startDate.getMinutes() &&
+        new Date(slot.endTime).getHours() === endDate.getHours() &&
+        new Date(slot.endTime).getMinutes() === endDate.getMinutes()
+    );
+    if (duplicate) {
+      toast.error("This availability slot already exists");
+      return;
+    }
     // Add to form data
     formData.append("startTime", startDate.toISOString());
     formData.append("endTime", endDate.toISOString());
