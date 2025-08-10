@@ -19,7 +19,9 @@ export async function setUserRole(formData) {
         where: { clerkUserId: userId },
     });
 
-    if (!user) return { error: "User not found in database" };
+    if (!user) {
+        return { error: "User not found. Please register first." };
+    }
 
     const role = formData.get("role");
 
