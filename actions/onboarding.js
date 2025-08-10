@@ -101,3 +101,28 @@ export async function getCurrentUser() {
         return null;
     }
 }
+
+/**
+ * Handles user registration
+ */
+export async function registerUser(formData) {
+    const email = formData.get("email");
+    const password = formData.get("password");
+    // Get clerkUserId from Clerk
+    const { userId: clerkUserId } = await auth();
+    // ...other data fields
+
+    // Check if user already exists
+    const existingUser = await db.user.findUnique({ where: { email } });
+    if (existingUser) {
+        // Handle already registered email
+        return { error: "Email already registered" };
+    }
+
+    // Proceed to create user WITH clerkUserId
+    const newUser = await db.user.create({ 
+        data: { email, password, clerkUserId /*, ...otherData*/ } 
+    });
+
+    return { success: true, user: newUser };
+}
