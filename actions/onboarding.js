@@ -11,7 +11,7 @@ export async function setUserRole(formData) {
     const { userId } = await auth();
 
     if (!userId) {
-        throw new Error("Unauthorized");
+        return { error: "Unauthorized" };
     }
 
     // Find user in our database
@@ -19,12 +19,12 @@ export async function setUserRole(formData) {
         where: { clerkUserId: userId },
     });
 
-    if (!user) throw new Error("User not found in database");
+    if (!user) return { error: "User not found in database" };
 
     const role = formData.get("role");
 
     if (!role || !["PATIENT", "DOCTOR"].includes(role)) {
-        throw new Error("Invalid role selection");
+        return { error: "Invalid role selection" };
     }
 
     try {
@@ -74,7 +74,7 @@ export async function setUserRole(formData) {
         }
     } catch (error) {
         console.error("Failed to set user role:", error);
-        throw new Error(`Failed to update user profile: ${error.message}`);
+        return { error: `Failed to update user profile: ${error.message}` };
     }
 }
 
