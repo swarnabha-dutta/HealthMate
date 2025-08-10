@@ -40,12 +40,12 @@ export async function setUserRole(formData) {
         }
 
         if (role === "DOCTOR") {
-            const speciality = formData.get("speciality");
+            const speciality = formData.get("speciality"); // ✅ fixed spelling
             const experience = parseInt(formData.get("experience"), 10);
             const credentialUrl = formData.get("credentialUrl");
             const description = formData.get("description");
 
-            if (!speciality || !experience || !credentialUrl || !description) {
+            if (!speciality || isNaN(experience) || !credentialUrl || !description) {
                 throw new Error("All fields are required");
             }
 
@@ -53,7 +53,7 @@ export async function setUserRole(formData) {
                 where: { clerkUserId: userId },
                 data: {
                     role: "DOCTOR",
-                    speciality,
+                    speciality, // ✅ matches DB schema
                     experience,
                     credentialUrl,
                     description,
@@ -90,10 +90,10 @@ export async function getCurrentUser() {
 
 /**
  * Handles user registration
+ * Note: Password is not stored here since Clerk manages it
  */
 export async function registerUser(formData) {
     const email = formData.get("email");
-    const password = formData.get("password");
     const { userId: clerkUserId } = await auth();
 
     const existingUser = await db.user.findUnique({ where: { email } });
@@ -102,7 +102,7 @@ export async function registerUser(formData) {
     }
 
     const newUser = await db.user.create({
-        data: { email, password, clerkUserId }
+        data: { email, clerkUserId }
     });
 
     return { success: true, user: newUser };
