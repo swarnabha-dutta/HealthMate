@@ -128,3 +128,11 @@ export async function registerUser(formData) {
 
     return { success: true, user: newUser };
 }
+
+// Before booking, check if user exists
+const user = await getCurrentUser();
+if (!user) {
+  // Redirect to registration or show a message
+  router.push("/register");
+  return;
+}
